@@ -1,36 +1,48 @@
-<?php
+<?php require("../header.php"); ?>
 
-print <<<EOT
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>装修巴士-账号注册</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-    <link href="../css/carousel.css" rel="stylesheet">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/formValidate.js"></script>
-    <script type="text/javascript" src="../js/commonFunction.js"></script>
-</head>
-EOT;
+<div class="container" style="padding: 50px">
+    <h2>创建账号</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-4"></div> <!--栅格占位-->
+        <div class="col-md-4">
+            <form method="post" class="form-horizontal" action="../script/php/regcheck.php">
+                <div class="form-group">
+                    <label for="inputEmail" >邮箱</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="邮箱地址" name="username" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">密码</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="密码" name="password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">重复密码</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="密码" name="confirm" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> 记住我
+                        </label>
+                    </div>
+                </div>
 
-print <<<EOT
-<form action="../script/php/regcheck.php" method="post">
-    用户名：<input type="text" name="username"/>
-    <br/>
-    密　码:<input type="password" name="password"/>
-    <br/>
-    确认密码：<input type="password" name="confirm"/>
-    <br/>
-    <input type="Submit" name="Submit" value="注册"/>
-</form>
-EOT;
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block" id="signinSubmitID" type="submit" name="Submit" value="注册">提交注册</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div><!--栅格占位-->
+    </div>
+</div>
 
-print <<<EOT
-</html>
-EOT;
-
-?>
+<?php require("../footer.php"); ?>
