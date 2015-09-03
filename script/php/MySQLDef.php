@@ -1,0 +1,30 @@
+<?php
+/*
+ * 定义数据库信息以适配本地环境和云端环境
+*/
+if(defined("SAE_MYSQL_HOST_M")) {
+    define("DECORATION_BUS_MYSQL_HOST", SAE_MYSQL_HOST_M);
+    define("DECORATION_BUS_MYSQL_PORT", SAE_MYSQL_PORT);
+    define("DECORATION_BUS_MYSQL_USER", SAE_MYSQL_USER);
+    define("DECORATION_BUS_MYSQL_PASS", SAE_MYSQL_PASS);
+    define("DECORATION_BUS_MYSQL_DB", SAE_MYSQL_DB);
+}
+else {
+    define("DECORATION_BUS_MYSQL_HOST", "localhost");
+    define("DECORATION_BUS_MYSQL_PORT", "3306");
+    define("DECORATION_BUS_MYSQL_USER", "root");
+    define("DECORATION_BUS_MYSQL_PASS", "");
+    define("DECORATION_BUS_MYSQL_DB", "test");
+}
+
+define("DECORATION_BUS_MYSQL_CHARSET", "set names utf8");
+
+/*
+echo DECORATION_BUS_MYSQL_HOST;
+echo DECORATION_BUS_MYSQL_PORT;
+echo DECORATION_BUS_MYSQL_USER;
+echo DECORATION_BUS_MYSQL_PASS;
+echo DECORATION_BUS_MYSQL_DB;
+*/
+
+?>
