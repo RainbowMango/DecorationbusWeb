@@ -32,6 +32,6 @@ if(!createUser($user, $psw)) {
     die();
 }
 
-echo "<script>alert('注册成功！'); history.go(-1);</script>";
+echo "<script>alert('注册成功！'); setTimeout(\"window.location='../../index.html'\",500);</script>";
 
 ?>

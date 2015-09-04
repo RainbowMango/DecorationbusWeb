@@ -3,7 +3,6 @@ include("MySQLDef.php");
 
 //执行SQL
 function executeSQL($sql) {
-    echo "执行的SQL：".$sql;
     /*连接数据库*/
     $link=mysql_connect(DECORATION_BUS_MYSQL_HOST.':'.DECORATION_BUS_MYSQL_PORT, DECORATION_BUS_MYSQL_USER, DECORATION_BUS_MYSQL_PASS);
     if(!$link || !mysql_select_db(DECORATION_BUS_MYSQL_DB, $link)) {
