@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("MySQLUtil.php");
 
 if(!isset($_POST["Submit"]) || $_POST["Submit"] != "注册") {
@@ -32,6 +33,7 @@ if(!createUser($user, $psw)) {
     die();
 }
 
-echo "<script>alert('注册成功！'); setTimeout(\"window.location='../../index.html'\",500);</script>";
+$_SESSION["valid_user"] = $user;
+echo "<script>alert('注册成功！'); setTimeout(\"window.location='../../index.php'\",500);</script>";
 
 ?>

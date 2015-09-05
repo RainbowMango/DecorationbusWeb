@@ -1,286 +1,388 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0026)http://www.oschina.net/app -->
-<html lang="zh-CN" xml:lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <link rel="shortcut icon" type="image/x-icon" href="http://www.oschina.net/img/favicon.ico?t=1408501845000">
-  <title>装修巴士客户端主页</title>
-  <meta name="Keywords" content="装修巴士手机客户端,DecorationBus iPhone App">  <meta name="Description" content="开源中国Android、iPhone、WP7客户端，为你提供触手可及的装修信息">    <link rel="stylesheet" href="./OSChina_files/channel.css" type="text/css" media="screen">
-  <link rel="stylesheet" type="text/css" href="./OSChina_files/jquery.fancybox-1.3.4.css" media="screen">
-  <link rel="alternate" type="application/rss+xml" title="最新开源项目" href="http://www.oschina.net/project/rss">
-  <link rel="alternate" type="application/rss+xml" title="最新开源资讯" href="http://www.oschina.net/news/rss">
-  <link rel="alternate" type="application/rss+xml" title="最新问题列表" href="http://www.oschina.net/question/rss">
-  <link rel="alternate" type="application/rss+xml" title="最新翻译列表" href="http://www.oschina.net/translate/rss">
-  <link rel="alternate" type="application/rss+xml" title="最新博客列表" href="http://www.oschina.net/blog/rss">
-  <link rel="alternate" type="application/rss+xml" title="最新代码分享列表" href="http://www.oschina.net/code/rss">
-  <link rel="alternate" type="application/rss+xml" title="开源中国 - 源码列表" href="http://www.oschina.net/code/source_rss">
-  <script type="text/javascript" src="./OSChina_files/jquery-1.7.1.min.js"></script>
-  <script type="text/javascript" src="./OSChina_files/jquery.form.js"></script>
-  <script type="text/javascript" src="./OSChina_files/jquery.fancybox-fixed.js"></script>
-  <link rel="stylesheet" href="./OSChina_files/tip-yellowsimple.css" type="text/css">
-  <script type="text/javascript" src="./OSChina_files/jquery.poshytip.min.js"></script>
-  <script type="text/javascript">
-    g_user = {
-  id:0,
-  name:'',
-  login:false};  </script>
-  <script type="text/javascript" src="./OSChina_files/oschina.js"></script>
-  <script type="text/javascript" src="./OSChina_files/utils.js"></script>
-  <script type="text/javascript" src="./OSChina_files/channel.js"></script>
+<?php
+session_start();
+if(isset($_SESSION['valid_user']))
+{
+    echo "You are logged in as: ".$_SESSION['valid_user']."<br/>";
+    //exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>装修巴士-权威公正的装修点评</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/carousel.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="OSC_NavTop">
-  <div class="wp998">
-    <div id="OSC_Channels">
-      <ul>
-        <li class="item"><a href="http://www.oschina.net/" class="home">首页</a></li>          
-        <li class="item control_select"><a href="http://www.oschina.net/project" class="project">开源项目</a>
-            <ul class="cs_content" style="display: none;">          
-                 <li><a href="http://www.oschina.net/project/lang/19/java">产品需求</a></li>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">装修巴士</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="page/decoration_company.html">装修公司</a></li>
+                <li><a href="page/designer.html">设计师</a></li>
+                <li><a href="page/manager.html">项目经理</a></li>
+                <li><a href="page/worker.html">装修师傅</a></li>
+                <li><a href="page/shop.html">建材</a></li>
+                <li><a href="#">论坛</a></li>
             </ul>
-        </li>
-        <li class="item control_select">
-          <a href="http://www.oschina.net/question" class="question">问答</a>        
-          <ul class="cs_content" style="display: none;">          
-                <li><a href="http://www.oschina.net/question?catalog=1"> 技术问答 » </a></li>
-                <li><a href="http://www.oschina.net/question?catalog=2"> 技术分享 » </a></li>
-                <li><a href="http://www.oschina.net/question?catalog=100"> 职业生涯 » </a></li>
-                <li><a href="http://www.oschina.net/question?catalog=4"> 站务/建议 » </a></li>
-          </ul>
-        </li>
-        <li class="item"><a href="http://www.oschina.net/code/list" class="code">代码</a></li>
-        <li class="item"><a href="http://www.oschina.net/blog" class="blog">博客</a></li>
-        <li class="item"><a href="http://www.oschina.net/translate" class="tran">翻译</a></li>
-        <li class="item"><a href="http://www.oschina.net/news" class="news">资讯</a></li>
-        <li class="item control_select">
-          <a href="http://www.oschina.net/android" class="mobile">移动开发</a>
-          <ul class="cs_content cs_mobile" style="display: none;">
-                <li class="android_"><a href="http://www.oschina.net/android">Android开发专区</a></li>
-                <li class="ios_"><a href="http://www.oschina.net/ios/home">iOS开发专区</a></li>
-                <li class="ios_"><a href="http://www.oschina.net/ios/codingList">iOS代码库</a></li>
-                <li class="wp7_"><a href="http://www.oschina.net/wp">Windows Phone</a></li>
-          </ul>
-        </li>
-        <li class="item t_job"><a href="http://www.oschina.net/job" class="job">招聘</a></li>
-        <li class="item control_select">
-          <a href="http://city.oschina.net/" id="MyCities" title="城市圈">城市圈</a>
-        </li>
-      </ul>
+            <?php
+                if(isset($_SESSION['valid_user'])) {
+
+                }
+                else {
+                    echo '<ul class="nav navbar-nav navbar-right">';
+                    echo '<li><a href="auth/login.html">登录<span class="glyphicon glyphicon-log-in"></span> </a></li>';
+                    echo '<li><a href="auth/signin.html">注册<span class="glyphicon glyphicon-registration-mark"></span></a></li>';
+                    echo '</ul>';
+                }
+            ?>
+            <form class="navbar-form navbar-right" role="search">
+                <input type="text" class="form-control" placeholder="搜点评...">
+            </form>
+        </div><!--/.nav-collapse -->
     </div>
-    <div id="OSC_Userbar">
-      当前访客身份：游客 [ <a href="http://www.oschina.net/home/login?goto_page=http%3A%2F%2Fwww.oschina.net%2Fapp">登录</a> | <a href="http://www.oschina.net/home/reg">加入装修巴士</a> ]
-    </div>
-    <div class="clear"></div>
-  </div>
-</div>
+</nav>
 
-<div id="OSC_Banner">
-  <div class="wp998">
-    <a href="http://decorationbus.sinaapp.com" class="Logo" title="DecorationBus">装修巴士</a>
-    <h1><a href="./OSChina_files/OSChina.html">手机客户端</a></h1>
-    <dl>
-      <dt>&nbsp;</dt>
-      <dt>目前仅支持iPhone! </dt>
-    </dl>
-    
-    <form action="http://www.oschina.net/search" class="search">
-      <input type="hidden" name="scope" value="project">
-      <input id="channel_q" type="text" name="q" value="" placeholder="资讯、软件、分享、代码、博客" class="TXT">
-      <input type="submit" value="搜 索" class="BTN">
-    </form>
-   <div class="clear"></div>
-  </div>
-</div>
-
-<div id="OSC_Screen">
-  <div id="OSC_Content" class="CenterDiv">
-
-    <style>
-    #MobilePage {background:#fff;padding:20px 10px;}
-    #MobilePage h1 {border-bottom:2px solid #ddd;padding-bottom:10px;}
-    #MobilePage h1 {color:#333;}
-    
-    .Outline {overflow:hidden;}
-    .MobileList {overflow:hidden;margin:20px 0 0 0;}
-    .MobileList .Mobile {float:left; width:33%; overflow:hidden; margin-bottom:20px;}
-    .MobileList .Mobile h2 {text-align:center;font-size:12pt;color:#666;margin-bottom:30px;}
-    .MobileList .Mobile h3 {font-size:12pt;color:#666;margin-left:40px;font-weight:blod;}
-    .MobileList .Mobile .d_code{margin-left:80px;width:150px;height:150px;}
-    .MobileList .Mobile .phone {
-      margin:20px 0 0 30px;;
-      width:248px;
-      height:478px;
-    }
-    
-    .MobileList .Mobile .Links {
-      overflow:hidden;
-      margin:15px 0 10px 20px;
-    }
-    
-    .MobileList .Mobile .Links a {
-      float:left;
-      width:80px;
-      height:24px;
-      line-height:22px;
-      text-decoration:none;
-      background:#40AA53;
-      color:#fff;
-      text-align:center;
-      margin:0 5px;
-      font-size:10.5pt;
-    }
-    
-    .MobileList .Mobile .android {background: url('/img/mobile/android_bg.jpg') 0 0 no-repeat;}
-    .MobileList .Mobile .iphone {background: url('/img/mobile/iphone_bg.jpg') 0 0 no-repeat;}
-    .MobileList .Mobile .wp { background: url('/img/mobile/wp7_bg.jpg?rand=2342343') 0 0 no-repeat;}
-    .MobileList .Mobile .android .wrapper {float:left; margin:56px 0 0 26px;}
-    .MobileList .Mobile .iphone .wrapper {float:left; margin:74px 0 0 27px;}
-    .MobileList .Mobile .wp .wrapper {float:left; margin:66px 0 0 36px;}
-    
-    .wrapper ul li {
-      width: 194px;
-      height: 319px;
-      float:left;
-    }
-    
-    .feature{ float: left; margin-top: 30px; width: 976px; }
-    .feature li{
-      float: left;
-      width: 343px;
-      padding-left: 95px;
-      margin-bottom: 35px;
-      margin-left:50px;
-      background: url(../img/mobile/mobile_icon.gif) no-repeat;
-      color: #444;
-    }
-    
-    .feature p{ margin-top:8px; font-size: 16px; width: 280px;}
-    .feature li.dongtan{ background-position: 0px -330px; }
-    .feature li.zixun{ background-position: 0px -435px; }
-    .feature li.hudong{  background-position: 0px -535px; }
-    .feature li.wenzhang{  background-position: 0px -655px; }
-    .feature li.project{ background: url('http://git.oschina.net/appclient01.png') 0 0 no-repeat;}
-    .feature li.code{ background: url('http://git.oschina.net/appclient02.png') 0 0 no-repeat;}
-    .feature li.issue{ background: url('http://git.oschina.net/appclient03.png') 0 0 no-repeat;}
-    .feature li.yaoyiyao{ background: url('http://git.oschina.net/appclient04.png') 0 0 no-repeat;}
-    .feature li.simple{ background: url('http://git.oschina.net/appclient01.png') 0 0 no-repeat;}
-    .feature li.hard{ background: url('http://git.oschina.net/appclient02.png') 0 0 no-repeat;}
-    .feature li.record{ background: url('http://git.oschina.net/appclient03.png') 0 0 no-repeat;}
-    .feature li.welcome{ background: url('http://git.oschina.net/appclient04.png') 0 0 no-repeat;}
-    
-    .download{ text-align:center; margin-top:5px; }
-    .download1{margin-left:45px;}
-    .git_android{ padding-left:60px; }
-    .git_iphone{ margin-left:-40px; }
-    
-    </style>
-    
-    <div id="MobilePage">
-      <h1>DecorationBus 客户端</h1>
-      <div class="Outline">
-        <div class="feature">
-          <ul>
-            <li class="simple">
-              <h2>让装修变得简单</h2>
-              <p>装修巴士旨在深入到装修过程中的各个环节，减轻装修业主负担</p>
-            </li>
-            <li class="hard">
-              <h2>记录装修的苦辣辛酸</h2>
-              <p>经历过装修的业主才能明白其中的艰辛、迷茫和幸福。
-                 预算、设计、施工、建材选购及后续保修等事项都让业主操碎了心。</p>
-            </li>
-            <li class="record">
-              <h2>随时随地记上一笔吧</h2>
-              <p>有了装修巴士，再也不愁不知道预算花哪去了!</p>
-            </li>
-            <li class="welcome">
-              <h2>装修巴士欢迎你</h2>
-              <p>本应用使用全新的swift语言，一切刚刚开始，欢迎加入~</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="MobileList">
-        <div class="Mobile">
-          <div class="android phone">
-            <div class="wrapper">
-              <ul>
-                <li><img src="./OSChina_files/191913_JkUa_865233.jpg"></li>
-              </ul>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Example headline.</h1>
+                    <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                </div>
             </div>
-          </div>
-        <div class="Links">
-          <a href="https://www.oschina.net/uploads/oschina-1.7.7.1.apk" target="_blank">1.7 下载</a>
-          <a href="https://www.oschina.net/uploads/osc-android-app-2.0.4.apk" target="_blank">2.0 下载</a>
-          <a href="http://git.oschina.net/oschina/android-app" target="_blank">源码下载</a>
         </div>
-        <img src="./OSChina_files/205141_w8hy_865233.png" class="d_code" width="150px" height="150px" title="扫一扫下载">
-            <h2>开源中国 Android 客户端</h2>
-      </div>
-      <div class="Mobile">
-        <div class="iphone phone">
-          <div class="wrapper">
-          <ul>
-            <li><img src="./OSChina_files/iphone3.jpg"></li>
-          </ul>
-          </div>
+        <div class="item">
+            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Another example headline.</h1>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                </div>
+            </div>
         </div>
-        <div class="Links">
-          <a href="http://itunes.apple.com/cn/app/kai-yuan-zhong-%20guo/id524298520?mt=8" target="_blank">App Store</a>
-          <a href="https://www.oschina.net/uploads/osc.ipa" target="_blank">站内下载</a>
-          <a href="http://git.oschina.net/oschina/iphone-app" target="_blank">源码下载</a>
+        <div class="item">
+            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>One more for good measure.</h1>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                </div>
+            </div>
         </div>
-        <img src="./OSChina_files/iphone_app.png" class="d_code" width="150px" height="150px" title="扫一扫下载">
-        <h2>开源中国 iPhone 客户端</h2>
-      </div>
-      <div class="Mobile">
-        <div class="wp phone">
-          <div class="wrapper">
-          <ul>
-            <li><img src="./OSChina_files/wp71.jpg" width="195"></li>
-          </ul>
-          </div>
-        </div>
-        <div class="Links">
-          <a href="http://windowsphone.com/s?appid=f1b59e83-d617-4f60-a17e-25021188e284" target="_blank">应用商店</a>
-          <a href="https://www.oschina.net/uploads/osc.xap" target="_blank">站内下载</a>
-          <a href="http://git.oschina.net/oschina/wp7-app" target="_blank">源码下载</a>
-        </div>
-        <img src="./OSChina_files/wp_app.png" class="d_code" width="150px" height="150px" title="扫一扫下载">
-        <h2>Windows Phone 客户端</h2>
-      </div>
     </div>
-  </div>
-  <div class="clear"></div>
-</div>
-
-<div id="OSC_Footer" class="CenterDiv"><style>
-.oscapp {text-align:left; width:220px;}
-.oscapp span {float:left;width:140px;}
-.oscapp a {float:left;text-indent:-9999em;width:16px;margin-left:8px;}
-.oscapp a.android {background:url('/img/android.gif') no-repeat left center;}
-.oscapp a.iphone {background:url('./OSChina_files/img/iphone.gif') no-repeat left center;}
-.oscapp a.wp7 {background:url('/img/wp7.gif') no-repeat left center;}
-</style>
-<table width="100%"><tbody><tr>
-<td align="left">© 装修巴士(OSChina.NET) | <a href="http://www.oschina.net/home/aboutosc">关于我们</a> | <a href="mailto:qdurenhongcai@163.com">广告联系</a> | <a href="http://weibo.com/u/2149620187?from=myfollow_all" target="_blank">@新浪微博</a> | <a href="http://m.oschina.net/">装修巴士手机版</a></td>
-<td class="oscapp">
-  <span>装修巴士手机客户端：</span>
-  <a href="./OSChina_files/OSChina.html" class="android" title="Android客户端">Android</a>
-  <a href="./OSChina_files/OSChina.html" class="iphone" title="iPhone 客户端">iPhone</a>
-  <a href="./OSChina_files/OSChina.html" class="wp7" title="Windows Phone 客户端">WP7</a>
-</td>
-</tr>
-<tr>
-<td colspan="2" align="left">装修巴士社区(OSChina.net)是工信部 <a href="http://www.copu.org.cn/" target="_blank">开源软件推进联盟</a> 指定的官方社区</td>
-</tr>
-</tbody></table>
-<script type="text/javascript">
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div><!-- /.carousel -->
 <!--
-if (top.location != self.location)top.location=self.location;
-//-->
-</script>
+<div class="container">
+    <div class="page-header"></div>
+    <div class="text-center">
+        <h1>装修巴士--装修难题从点评开始</h1>
+        <p class="lead">
+            团队招募中...<br>
+            联系方式: <a href="mailto:#">qdurenhongcai@163.com.</a>
+        </p>
+    </div>
 </div>
+-->
+
+<div class="container text-center">
+    <h1>装修公司优选</h1>
+    <h4>这里是板块介绍</h4>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修公司名字</h3>
+                <p>这里是装修公司介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修公司名字</h3>
+                <p>这里是装修公司介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修公司名字</h3>
+                <p>这里是装修公司介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修公司名字</h3>
+                <p>这里是装修公司介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- 设计师板块 -->
+<div class="container text-center">
+    <h1>设计师优选</h1>
+    <h4>这里是板块介绍</h4>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/designer/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>设计师名字</h3>
+                <p>设计师简介</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/designer/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>设计师名字</h3>
+                <p>设计师简介</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/designer/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>设计师名字</h3>
+                <p>设计师简介</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/designer/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>设计师名字</h3>
+                <p>设计师简介</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Generated by OsChina.NET (init:0[ms],page:3[ms],ip:110.75.16.60) --><div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>
+<div class="container text-center">
+    <h1>项目经理优选板块</h1>
+    <h4>这里是板块介绍</h4>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/manager/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>项目经理名字</h3>
+                <p>项目经理介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/manager/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>项目经理名字</h3>
+                <p>项目经理介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/manager/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>项目经理名字</h3>
+                <p>项目经理介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/manager/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>项目经理名字</h3>
+                <p>项目经理介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--工人板块-->
+<div class="container text-center">
+    <h1>装修工人优选</h1>
+    <h4>这里是板块介绍</h4>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/worker/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修师傅姓名</h3>
+                <p>这里是装修工人介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/worker/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修师傅姓名</h3>
+                <p>这里是装修工人介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/worker/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修师傅姓名</h3>
+                <p>这里是装修工人介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/worker/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>装修师傅姓名</h3>
+                <p>这里是装修工人介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--建材商家板块-->
+<div class="container text-center">
+    <h1>建材商家优选</h1>
+    <h4>这里是板块介绍</h4>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/shop/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>商家名字</h3>
+                <p>这里是商家介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/shop/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>商家名字</h3>
+                <p>这里是商家介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/shop/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>商家名字</h3>
+                <p>这里是商家介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="img/shop/model.jpg" alt="...">
+            <div class="caption text-center">
+                <h3>商家名字</h3>
+                <p>这里是商家介绍</p>
+                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<footer>
+    <div class="container text-center">
+
+        <p>装修行业水深似海--我们只是尽自己微薄之力试图净化这个市场，让装修更简单一些</p>
+        <p>本网站所有开发者无一不体验过装修的艰辛，利用业余时间参与开发</p>
+        <p>不管您从事任何行业，都可以参与到本网站开发中，有意请<a href="mailto:qdurenhongcai@163.com">联系我们</a></p>
+        <!--<ul class="list-inline">
+            <li>当前版本： v3.3.5</li>
+            <li>&middot;</li>
+            <li><a href="https://github.com/twbs/bootstrap">GitHub 仓库</a></li>
+            <li>&middot;</li>
+            <li><a href="../getting-started/#examples">实例精选</a></li>
+            <li>&middot;</li>
+            <li><a href="http://v2.bootcss.com/">v2.3.2 中文文档</a></li>
+            <li>&middot;</li>
+            <li><a href="../about/">关于</a></li>
+            <li>&middot;</li>
+            <li><a href="http://expo.bootcss.com">优站精选</a></li>
+            <li>&middot;</li>
+            <li><a href="http://blog.getbootstrap.com">官方博客</a></li>
+            <li>&middot;</li>
+            <li><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+            <li>&middot;</li>
+            <li><a href="https://github.com/twbs/bootstrap/releases">历史版本</a></li>
+        </ul>-->
+    </div>
+</footer>
+</body>
+</html>
