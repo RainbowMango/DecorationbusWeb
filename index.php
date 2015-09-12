@@ -1,11 +1,4 @@
-<?php
-session_start();
-if(isset($_SESSION['valid_user']))
-{
-    echo "You are logged in as: ".$_SESSION['valid_user']."<br/>";
-    //exit();
-}
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +21,7 @@ if(isset($_SESSION['valid_user']))
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">装修巴士</a>
+            <a class="navbar-brand" href="index.php">装修巴士</a>
         </div>
 
         <div class="navbar-collapse collapse">
@@ -49,8 +42,8 @@ if(isset($_SESSION['valid_user']))
                 }
                 else {
                     echo '<ul class="nav navbar-nav navbar-right">';
-                    echo '<li><a href="auth/login.html">登录<span class="glyphicon glyphicon-log-in"></span> </a></li>';
-                    echo '<li><a href="auth/signin.html">注册<span class="glyphicon glyphicon-registration-mark"></span></a></li>';
+                    echo '<li><a href="auth/login.php">登录<span class="glyphicon glyphicon-log-in"></span> </a></li>';
+                    echo '<li><a href="auth/register.php">注册<span class="glyphicon glyphicon-registration-mark"></span></a></li>';
                     echo '</ul>';
                 }
             ?>
