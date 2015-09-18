@@ -37,7 +37,7 @@
                 if(isset($_SESSION['valid_user'])) {
                     echo '<ul class="nav navbar-nav navbar-right">';
                     echo '<li><a href="#">'.$_SESSION['valid_user'].'<span class="glyphicon glyphicon-user"></span> </a></li>';
-                    echo '<li><a href="#">注销<span class="glyphicon glyphicon-log-out"></span></a></li>';
+                    echo '<li><a href="auth/logout.php">注销<span class="glyphicon glyphicon-log-out"></span></a></li>';
                     echo '</ul>';
                 }
                 else {

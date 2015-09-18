@@ -6,19 +6,19 @@
     <div class="row">
         <div class="col-md-4"></div> <!--栅格占位-->
         <div class="col-md-4">
-            <form action="" method="post" class="form-horizontal">
+            <form action="../script/php/loginHandler.php" method="post" class="form-horizontal">
                 <div class="form-group">
                     <label for="inputEmail" >邮箱</label>
                     <div class="input-group">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="邮箱地址" required autofocus>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="邮箱地址" name="username" required autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword">密码</label>
                     <div class="input-group">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="密码" name="passwd" required>
                     </div>
                 </div>
                 <div class="form-group">
