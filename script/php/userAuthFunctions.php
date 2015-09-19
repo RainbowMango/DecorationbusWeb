@@ -1,6 +1,7 @@
 <?php
 
 require_once('databaseFunctions.php');
+header("Content-Type: text/html; charset=utf-8");
 
 function register($username, $email, $password) {
 // register new person with db
