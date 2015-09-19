@@ -35,10 +35,22 @@
             </ul>
             <?php
                 if(isset($_SESSION['valid_user'])) {
-                    echo '<ul class="nav navbar-nav navbar-right">';
-                    echo '<li><a href="#">'.$_SESSION['valid_user'].'<span class="glyphicon glyphicon-user"></span> </a></li>';
-                    echo '<li><a href="auth/logout.php">注销<span class="glyphicon glyphicon-log-out"></span></a></li>';
-                    echo '</ul>';
+                    $userName=$_SESSION['valid_user'];
+print <<<EOT
+                    <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            $userName
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">我的点评</a></li>
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="auth/logout.php">退出登录</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+EOT;
                 }
                 else {
                     echo '<ul class="nav navbar-nav navbar-right">';
