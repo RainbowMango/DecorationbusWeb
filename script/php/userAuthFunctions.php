@@ -50,8 +50,7 @@ function login($username, $password) {
     $conn = db_connect();
 
     // check if username is unique
-    //$result = $conn->query("select * from user where email='".$username."' and passwd = sha1('".$password."')");
-    $result = $conn->query("select * from user where email='".$username."' and passwd = '".$password."'");
+    $result = $conn->query("select * from user where username='".$username."' and passwd = sha1('".$password."')");
     if (!$result) {
         throw new Exception('Could not log you in.');
     }
