@@ -1,6 +1,7 @@
 <?php
 
 require_once('databaseFunctions.php');
+require_once('../../oss/PHPMailer/PHPMailerAutoload.php');
 header("Content-Type: text/html; charset=utf-8");
 
 function register($username, $email, $password) {
@@ -85,43 +86,30 @@ function change_password($username, $old_password, $new_password) {
     }
 }
 
-function get_random_word($min_length, $max_length) {
-// grab a random word from dictionary between the two lengths
-// and return it
+//取得指定位数密码，默认6位
+function generate_password( $length = 6 ) {
+    // 密码字符集，可任意添加你需要的字符
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-    // generate a random word
-    $word = '';
-    // remember to change this path to suit your system
-    $dictionary = '/usr/dict/words';  // the ispell dictionary
-    $fp = @fopen($dictionary, 'r');
-    if(!$fp) {
-        return false;
+    $password = '';
+    for ( $i = 0; $i < $length; $i++ )
+    {
+        // 这里提供两种字符获取方式
+        // 第一种是使用 substr 截取$chars中的任意一位字符；
+        // 第二种是取字符数组 $chars 的任意元素
+        // $password .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        $password .= $chars[ mt_rand(0, strlen($chars) - 1) ];
     }
-    $size = filesize($dictionary);
 
-    // go to a random location in dictionary
-    $rand_location = rand(0, $size);
-    fseek($fp, $rand_location);
-
-    // get the next whole word of the right length in the file
-    while ((strlen($word) < $min_length) || (strlen($word)>$max_length) || (strstr($word, "'"))) {
-        if (feof($fp)) {
-            fseek($fp, 0);        // if at end, go to start
-        }
-        $word = fgets($fp, 80);  // skip first word as it could be partial
-        $word = fgets($fp, 80);  // the potential password
-    }
-    $word = trim($word); // trim the trailing \n from fgets
-    return $word;
+    return $password;
 }
 
 function reset_password($username) {
 // set password for username to a random value
 // return the new password or false on failure
     // get a random dictionary word b/w 6 and 13 chars in length
-    $new_password = get_random_word(6, 13);
-
-    if($new_password == false) {
+    $new_password = generate_password(6, 13);
+    if(empty($new_password)) {
         throw new Exception('Could not generate new password.');
     }
 
@@ -134,7 +122,7 @@ function reset_password($username) {
     $conn = db_connect();
     $result = $conn->query("update user
                           set passwd = sha1('".$new_password."')
-                          where username = '".$username."'");
+                          where email = '".$username."'");
     if (!$result) {
         throw new Exception('Could not change password.');  // not changed
     } else {
@@ -142,29 +130,99 @@ function reset_password($username) {
     }
 }
 
+//function sendmailto($mailto, $mailsub, $mailbd)
+//{
+//    $smtpserver     = "smtp.163.com"; //SMTP服务器
+//    $smtpserverport = 25; //SMTP服务器端口
+//    $smtpusermail   = "qdurenhongcai@163.com"; //SMTP服务器的用户邮箱
+//    $smtpemailto    = $mailto;
+//    $smtpuser       = "qdurenhongcai@163.com"; //SMTP服务器的用户帐号
+//    $smtppass       = "Cai_qdu."; //SMTP服务器的用户密码
+//    $mailsubject    = $mailsub; //邮件主题
+//    $mailsubject    = "=?UTF-8?B?" . base64_encode($mailsubject) . "?="; //防止乱码
+//    $mailbody       = $mailbd; //邮件内容
+//    //$mailbody = "=?UTF-8?B?".base64_encode($mailbody)."?="; //防止乱码
+//    $mailtype       = "HTML"; //邮件格式（HTML/TXT）,TXT为文本邮件. 139邮箱的短信提醒要设置为HTML才正常
+//    ##########################################
+//    echo $smtpserver;
+//    $smtp           = new smtp($smtpserver, $smtpserverport, true, $smtpuser, $smtppass); //这里面的一个true是表示使用身份验证,否则不使用身份验证.
+//    echo "ok";
+//    $smtp->debug    = FALSE; //是否显示发送的调试信息
+//
+//    return $smtp->sendmail($smtpemailto, $smtpusermail, $mailsubject, $mailbody, $mailtype);
+//}
+
+function sendmailto($mailto, $mailsub, $mailbd) {
+    try {
+        $mail = new PHPMailer;
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.163.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'qdurenhongcai@163.com';                 // SMTP username
+        $mail->Password = 'Cai_qdu.';                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 25;                                    // TCP port to connect to
+
+        $mail->From = 'qdurenhongcai@163.com';
+        $mail->FromName = "=?UTF-8?B?" . base64_encode("装修巴士") . "?=";
+        $mail->addAddress($mailto);     // Add a recipient
+        //$mail->addAddress('ellen@example.com');               // Name is optional
+        //$mail->addReplyTo('info@example.com', 'Information');
+        //$mail->addCC('cc@example.com');
+        //$mail->addBCC('bcc@example.com');
+
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->Subject = "=?UTF-8?B?" . base64_encode($mailsub) . "?=";
+        $mail->Body    = $mailbd;
+        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            return false;
+        } else {
+            echo 'Message has been sent';
+        }
+    }
+    catch(Exception $e) {
+        throw new Exception("send mail failed by PHPMailer.");
+    }
+
+    return true;
+}
+
 function notify_password($username, $password) {
 // notify the user that their password has been changed
 
     $conn = db_connect();
-    $result = $conn->query("select email from user
-                            where username='".$username."'");
+
+    $result = $conn->query("select email from user where email='".$username."'");
+
     if (!$result) {
         throw new Exception('Could not find email address.');
     } else if ($result->num_rows == 0) {
         throw new Exception('Could not find email address.');
         // username not in db
     } else {
-        $row = $result->fetch_object();
-        $email = $row->email;
-        $from = "From: support@phpbookmark \r\n";
-        $mesg = "Your PHPBookmark password has been changed to ".$password."\r\n"
-            ."Please change it next time you log in.\r\n";
-
-        if (mail($email, 'PHPBookmark login information', $mesg, $from)) {
-            return true;
-        } else {
-            throw new Exception('Could not send email.');
+        try {
+            $row = $result->fetch_object();
+            $mailto = $row->email;
+            $mailsubject = "装修巴士账号密码重置";
+            $mailbody = "$password";
+            $status = sendmailto($mailto, $mailsubject, $mailbody);
+            if(!$status) {
+                throw new Exception("sendmailto failed.");
+            }
         }
+        catch(Exception $e)  {
+            echo "Exception ". $e->getCode(). ": ". $e->getMessage()."<br />".
+                " in ". $e->getFile(). " on line ". $e->getLine(). "<br />";
+            exit;
+        }
+
     }
 }
 

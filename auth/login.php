@@ -33,7 +33,7 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
                 </div>
             </form>
-            <a href="resetpswd.html">忘记密码?</a>
+            <a href="forgotPasswd.php">忘记密码?</a>
         </div>
         <div class="col-md-4"></div><!--栅格占位-->
     </div>
