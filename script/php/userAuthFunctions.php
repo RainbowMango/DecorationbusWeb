@@ -14,15 +14,25 @@ function register($username, $email, $password) {
     // check if username is unique
     $result = $conn->query("select * from user where username='".$username."'");
     if (!$result) {
-        throw new Exception('Could not execute query');
+        throw new Exception('Search user name failed.');
     }
 
     if ($result->num_rows>0) {
         throw new Exception('That username is taken - go back and choose another one.');
     }
 
+    // check if email is unique
+    $result = $conn->query("select * from user where email = '".$email."'");
+    if(!$result) {
+        throw new Exception("Search email failed.");
+    }
+
+    if ($result->num_rows>0) {
+        throw new Exception('That email is taken - go back and choose another one.');
+    }
+
     // if ok, put in db
-    $result = $conn->query("insert into user values
+    $result = $conn->query("insert into user(username, passwd, email) values
                          ('".$username."', sha1('".$password."'), '".$email."')");
     if (!$result) {
         throw new Exception('Could not register you in database - please try again later.');

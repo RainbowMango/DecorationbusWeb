@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("MySQLUtil.php");
+require_once("userAuthFunctions.php");
 
 if(!isset($_POST["Submit"]) || $_POST["Submit"] != "注册") {
     echo "<script>alert('提交未成功！'); history.go(-1);</script>";
@@ -8,13 +8,14 @@ if(!isset($_POST["Submit"]) || $_POST["Submit"] != "注册") {
 }
 
 $user = $_POST["username"];
+$email = $_POST["email"];
 $psw = $_POST["password"];
 $psw_confirm = $_POST["confirm"];
 
-if($user == "" || $psw == "" || $psw_confirm == "")
+if(empty($user) || empty($email) || empty($psw) || empty($psw_confirm))
 {
     echo "<script>alert('请确认信息完整性！'); history.go(-1);</script>";
-    die();
+    exit;
 }
 
 if($psw != $psw_confirm) {
@@ -22,15 +23,14 @@ if($psw != $psw_confirm) {
     die();
 }
 
-if(userExist($user)) {
-    echo "<script>alert('用户名已存在'); history.go(-1);</script>";
-    die();
+try {
+    register($user, $email, $psw);
 }
-
-// 插入新用户
-if(!createUser($user, $psw)) {
-    echo "<script>alert('注册失败，请稍候再试！'); history.go(-1);</script>";
-    die();
+catch (Exception $e) {
+    echo "Exception ". $e->getCode(). ": ". $e->getMessage()."<br />".
+        " in ". $e->getFile(). " on line ". $e->getLine(). "<br />";
+    echo "<script>alert('登录失败！'); history.go(-1);</script>";
+    exit;
 }
 
 $_SESSION["valid_user"] = $user;

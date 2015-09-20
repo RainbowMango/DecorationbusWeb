@@ -14,7 +14,7 @@ else {
     define("DECORATION_BUS_MYSQL_PORT", "3306");
     define("DECORATION_BUS_MYSQL_USER", "root");
     define("DECORATION_BUS_MYSQL_PASS", "");
-    define("DECORATION_BUS_MYSQL_DB", "test");
+    define("DECORATION_BUS_MYSQL_DB", "decorationbus");
 }
 
 define("DECORATION_BUS_MYSQL_CHARSET", "set names utf8");

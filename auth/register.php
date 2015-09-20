@@ -8,10 +8,17 @@
         <div class="col-md-4">
             <form method="post" class="form-horizontal" action="../script/php/regcheck.php">
                 <div class="form-group">
+                    <label for="inputUsername" >账号</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input type="text" id="inputUsername" class="form-control" placeholder="6~16位用户名" name="username" required autofocus>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputEmail" >邮箱</label>
                     <div class="input-group">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="邮箱地址" name="username" required autofocus>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="邮箱地址可以用来找回密码" name="email" required autofocus>
                     </div>
                 </div>
                 <div class="form-group">
