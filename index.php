@@ -67,42 +67,44 @@ EOT;
 </nav>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
+    <!-- 定义banner个数 -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
+    <!-- 定义每个banner -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+            <img class="first-slide" src="img/banner01.jpg" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>装修问题上装修巴士</h1>
+                    <h1>装修巴士</h1>
                     <p>这里汇集装修公司最真实地用户评价</p>
                 </div>
             </div>
         </div>
         <div class="item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+            <img class="second-slide" src="img/banner01.jpg" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>装修问题上装修巴士</h1>
+                    <h1>装修巴士</h1>
                     <p>帮您了解最真实的商家</p>
                 </div>
             </div>
         </div>
         <div class="item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+            <img class="third-slide" src="img/banner01.jpg" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>装修问题上装修巴士</h1>
+                    <h1>装修巴士</h1>
                     <p>帮您传播最真实的体验</p>
                 </div>
             </div>
         </div>
         <div class="item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+            <img class="third-slide" src="img/banner01.jpg" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>装修巴士</h1>
@@ -111,6 +113,7 @@ EOT;
             </div>
         </div>
     </div>
+    <!-- 定义左右控制箭头 -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
