@@ -11,4 +11,3 @@ function db_connect() {
 }
 
 ?>
-
