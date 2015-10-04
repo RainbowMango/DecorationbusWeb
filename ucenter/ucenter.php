@@ -41,20 +41,38 @@
     </div>
 </nav>
 
-<div class="media" style="margin-top: 70px; margin-left: 50px; margin-right: 50px">
-    <div class="media-left media-heading">
-        <a href="#">
-            <img class="media-object" src="../img/defaultMembershipPhoto.png" alt="用户头像" width="100px" height="100px">
-        </a>
-    </div>
-    <div class="media-body">
-        <h2 class="media-heading"><?php echo $_SESSION['valid_user'] ?></h2>
-        <div class="progress" style="max-width: 200px">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                当前积分：1000
+<!--侧边栏：参考页面http://v3.bootcss.com/examples/dashboard/# -->
+<div class="container-fluid">
+    <div class="row">
+        <link href="../css/dashboard.css" rel="stylesheet">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">用户中心</a></li>
+                <li><a href="#">用户信息</a></li>
+                <li><a href="#">实名认证</a></li>
+                <li><a href="#">通知设置</a></li>
+                <li><a href="#">账户等级</a></li>
+                <li><a href="#">消息中心</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="media">
+                <div class="media-left media-heading">
+                    <a href="#">
+                        <img class="media-object" src="../img/defaultMembershipPhoto.png" alt="用户头像" width="100px" height="100px">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading"><?php echo $_SESSION['valid_user'] ?></h2>
+                    <div class="progress" style="max-width: 200px">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                            当前积分：1000
+                        </div>
+                    </div>
+                    <h5>会员等级：士兵</h5>
+                </div>
             </div>
         </div>
-        <h5>会员等级：士兵</h5>
     </div>
 </div>
 
