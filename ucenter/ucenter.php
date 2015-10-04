@@ -1,4 +1,5 @@
 <?php session_start();?>
+<?php require_once("../script/php/ucenterFunctions.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,8 +66,8 @@
                 <div class="media-body">
                     <h2 class="media-heading"><?php echo $_SESSION['valid_user'] ?></h2>
                     <div class="progress" style="max-width: 200px">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                            当前积分：1000
+                        <div class="progress-bar" role="progressbar" style="width: 100%;">
+                            当前积分：<?php echo getUserScore($_SESSION['valid_user']) ?>
                         </div>
                     </div>
                     <h5>会员等级：士兵</h5>
