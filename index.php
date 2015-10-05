@@ -122,256 +122,95 @@ EOT;
         <span class="sr-only">Next</span>
     </a>
 </div><!-- /.carousel -->
-<!--
-<div class="container">
-    <div class="page-header"></div>
-    <div class="text-center">
-        <h1>装修巴士--装修难题从点评开始</h1>
-        <p class="lead">
-            团队招募中...<br>
-            联系方式: <a href="mailto:#">qdurenhongcai@163.com.</a>
-        </p>
-    </div>
-</div>
--->
 
-<div class="container text-center">
-    <h1>装修公司优选</h1>
-    <h4>这里是板块介绍</h4>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修公司名字</h3>
-                <p>这里是装修公司介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
+<!--参考http://v3.bootcss.com/examples/carousel/ -->
+<div class="container marketing">
+    <!-- 装修效果鉴赏 -->
+    <div class="row">
+        <h4>装修效果鉴赏</h4>
+        <hr>
+        <div class="col-lg-3">
+            <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-3">
+            <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-3">
+            <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-lg-3">
+            <img class="img-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修公司名字</h3>
-                <p>这里是装修公司介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
+    <div class="row">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">分享文章赚小费^_^</button>
     </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修公司名字</h3>
-                <p>这里是装修公司介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/decoration_company/zhongbozhuangshi.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修公司名字</h3>
-                <p>这里是装修公司介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- 设计师板块 -->
-<div class="container text-center">
-    <h1>设计师优选</h1>
-    <h4>这里是板块介绍</h4>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/designer/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>设计师名字</h3>
-                <p>设计师简介</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
+    <hr class="featurette-divider">
+
+    <!-- 装修公司点评动态更新 -->
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/designer/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>设计师名字</h3>
-                <p>设计师简介</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
+
+    <hr class="featurette-divider">
+
+    <!-- 项目经理点评动态更新 -->
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/designer/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>设计师名字</h3>
-                <p>设计师简介</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
+
+    <hr class="featurette-divider">
+
+    <!-- 装修工人点评动态更新 -->
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/designer/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>设计师名字</h3>
-                <p>设计师简介</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
+
+    <hr class="featurette-divider">
+
+    <!-- 建材商家点评动态更新 -->
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
         </div>
     </div>
 </div>
 
-<div class="container text-center">
-    <h1>项目经理优选板块</h1>
-    <h4>这里是板块介绍</h4>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/manager/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>项目经理名字</h3>
-                <p>项目经理介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/manager/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>项目经理名字</h3>
-                <p>项目经理介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/manager/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>项目经理名字</h3>
-                <p>项目经理介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/manager/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>项目经理名字</h3>
-                <p>项目经理介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--工人板块-->
-<div class="container text-center">
-    <h1>装修工人优选</h1>
-    <h4>这里是板块介绍</h4>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/worker/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修师傅姓名</h3>
-                <p>这里是装修工人介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/worker/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修师傅姓名</h3>
-                <p>这里是装修工人介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/worker/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修师傅姓名</h3>
-                <p>这里是装修工人介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/worker/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>装修师傅姓名</h3>
-                <p>这里是装修工人介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--建材商家板块-->
-<div class="container text-center">
-    <h1>建材商家优选</h1>
-    <h4>这里是板块介绍</h4>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/shop/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>商家名字</h3>
-                <p>这里是商家介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/shop/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>商家名字</h3>
-                <p>这里是商家介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/shop/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>商家名字</h3>
-                <p>这里是商家介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <img src="img/shop/model.jpg" alt="...">
-            <div class="caption text-center">
-                <h3>商家名字</h3>
-                <p>这里是商家介绍</p>
-                <p><a href="#" class="btn btn-primary" role="button">查看</a></p>
-            </div>
-        </div>
-    </div>
-</div>
 <hr>
 <footer>
     <div class="container text-center">
