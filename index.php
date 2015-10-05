@@ -44,7 +44,6 @@ print <<<EOT
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">我的点评</a></li>
                             <li><a href="ucenter/ucenter.php">个人中心</a></li>
                             <li><a href="auth/logout.php">退出登录</a></li>
                         </ul>

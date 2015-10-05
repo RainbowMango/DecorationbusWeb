@@ -51,6 +51,7 @@
                 <li class="active"><a href="#">用户中心</a></li>
                 <li><a href="#">用户信息</a></li>
                 <li><a href="#">实名认证</a></li>
+                <li><a href="#">我的点评</a></li>
                 <li><a href="#">通知设置</a></li>
                 <li><a href="#">账户等级</a></li>
                 <li><a href="#">消息中心</a></li>
