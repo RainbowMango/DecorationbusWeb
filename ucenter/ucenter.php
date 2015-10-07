@@ -61,7 +61,7 @@
             <div class="media">
                 <div class="media-left media-heading">
                     <a href="#">
-                        <img class="media-object" src="../img/defaultMembershipPhoto.png" alt="用户头像" width="100px" height="100px">
+                        <img class="media-object" src="../image/defaultMembershipPhoto.png" alt="用户头像" width="100px" height="100px">
                     </a>
                 </div>
                 <div class="media-body">
