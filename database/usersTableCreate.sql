@@ -1,5 +1,5 @@
 create table user(
-  userid      varchar(20)  not null primary key comment 'YYYYMMDDHHMMSSFFF',
+  userid      varchar(30)  not null primary key comment 'YYYYMMDDHHMMSSFFFRRRRR',
   nickname    varchar(16)                       comment '',
   avatar      varchar(256)                      comment '',
   passwd      varchar(128)                      comment '',
