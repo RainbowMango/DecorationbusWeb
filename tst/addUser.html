@@ -6,6 +6,9 @@
 <h1>Upload new news files</h1>
 <form enctype="multipart/form-data" action="../server/app/addUser.php" method=post>
     <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+    username: <input name="nickName" type="text">
+    sex     : <input name="sex" type="text">
+    phone   : <input name="phoneNumber" type="text">
     Upload this file: <input name="useravatar" type="file">
     <input type="submit" value="Send File">
 </form>
