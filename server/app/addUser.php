@@ -29,7 +29,7 @@ if($uploadFileType != 'image/png') {
     exit;
 }
 
-$storedFileName = '/Users/ruby/horen/WebServer/testStorage/xxxxx.png';
+$storedFileName = "/Users/ruby/horen/WebServer/testStorage/$phoneNumber.png";
 if(is_uploaded_file($_FILES['useravatar']['tmp_name'])) {
     if(!defined("SAE_MYSQL_HOST_M")) { // 开发环境
         if(!move_uploaded_file($_FILES['useravatar']['tmp_name'], $storedFileName)) {
@@ -39,6 +39,25 @@ if(is_uploaded_file($_FILES['useravatar']['tmp_name'])) {
     }
 
     //生产环境存储图片
+}
+
+$sexInt = ($sex == "男")? 1:0;
+addUserToDatabase(generateUserID(), $nickName, $storedFileName, $phoneNumber, $sexInt);
+
+//写入数据库
+function addUserToDatabase($id, $nickName, $avatar, $phone, $sex) {
+    $conn = db_connect();
+    $conn->set_charset("utf8"); // 指定数据库字符编码
+
+    $result = $conn->query(" insert into user(userid, nickname, avatar, sex, phone) values(\"$id\", \"$nickName\", \"$avatar\", $sex, \"$phone\");");
+    if (!$result) {
+        echo "Insert user info to database failed.";
+        $result->free();
+        $conn->close();
+    }
+
+    //$result->free();
+    $conn->close();
 }
 
 function setRequestAck($status, $info) {
