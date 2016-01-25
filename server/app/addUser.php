@@ -4,33 +4,40 @@ require_once('../../script/php/databaseFunctions.php');
 require_once('parmCommon.php');
 
 /*
- * interface
- * array('status'=>0, 'info'=>'success', 'input'=>array('fileName'=>'xxx.png', 'fileSize'=>'1023', 'fileType'=>'image/gif');
+ * interface: 以JSON格式返回
+ * array('status'=>0, 'info'=>'success', 'userID'=>'20160124233815097TX6C6');
  * */
 
-$requestAck = array('status'=>0, 'info'=>'success'); //默认返回结果
+//参数定义
+define("REGISTER_PARM_NICKNAME"    , "nickName");
+define("REGISTER_PARM_SEX"         , "sex");
+define("REGISTER_PARM_PHONE_NUMBER", "phoneNumber");
+define("REGISTER_PARM_AVATAR"      , "useravatar");
 
-$nickName    = getMandatoryParameter("nickName"   , "post");
-$sex         = getMandatoryParameter("sex"        , "post");
-$phoneNumber = getMandatoryParameter("phoneNumber", "post");
+$requestAck = array('status'=>1, 'info'=>'success', 'userID'=>''); //默认返回结果
 
-if(!isUploadSuccess("useravatar")) {
+$nickName    = getMandatoryParameter(REGISTER_PARM_NICKNAME    , "post");
+$sex         = getMandatoryParameter(REGISTER_PARM_SEX         , "post");
+$phoneNumber = getMandatoryParameter(REGISTER_PARM_PHONE_NUMBER, "post");
+
+if(!isUploadSuccess(REGISTER_PARM_AVATAR)) {
+    setRequestAck(1, "File useravatar upload failed", "");
     echo "File useravatar upload failed";
     exit;
 }
 
 //检查文件类型是否匹配
-$uploadFileType = $_FILES['useravatar']['type'];
+$uploadFileType = $_FILES[REGISTER_PARM_AVATAR]['type'];
 if($uploadFileType != 'image/png') {
     global $requestAck;
 
-    setRequestAck(1, "Problem: file is not image: $uploadFileType");
+    setRequestAck(1, "Problem: file is not image: $uploadFileType", "");
     print json_encode($requestAck);
     exit;
 }
 
 $storedFileName = "/Users/ruby/horen/WebServer/testStorage/$phoneNumber.png";
-if(is_uploaded_file($_FILES['useravatar']['tmp_name'])) {
+if(is_uploaded_file($_FILES[REGISTER_PARM_AVATAR]['tmp_name'])) {
     if(!defined("SAE_MYSQL_HOST_M")) { // 开发环境
         if(!move_uploaded_file($_FILES['useravatar']['tmp_name'], $storedFileName)) {
             echo 'Problem: Could not move file to destination directory';
@@ -42,7 +49,8 @@ if(is_uploaded_file($_FILES['useravatar']['tmp_name'])) {
 }
 
 $sexInt = ($sex == "男")? 1:0;
-addUserToDatabase(generateUserID(), $nickName, $storedFileName, $phoneNumber, $sexInt);
+$userID = generateUserID();
+addUserToDatabase($userID, $nickName, $storedFileName, $phoneNumber, $sexInt);
 
 //写入数据库
 function addUserToDatabase($id, $nickName, $avatar, $phone, $sex) {
@@ -60,11 +68,12 @@ function addUserToDatabase($id, $nickName, $avatar, $phone, $sex) {
     $conn->close();
 }
 
-function setRequestAck($status, $info) {
+function setRequestAck($status, $info, $userID) {
     global $requestAck;
 
     $requestAck['status'] = $status;
     $requestAck['info']   = $info;
+    $requestAck['userID'] = $userID;
 }
 
 function generateUserID() {
@@ -99,7 +108,7 @@ function getMillisecond($length) {
     return substr($afterDot, 0, 3);
 }
 
-setRequestAck(0, "success");
+setRequestAck(0, "success", $userID);
 print json_encode($requestAck);
 
 ?>
