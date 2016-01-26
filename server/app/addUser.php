@@ -14,15 +14,20 @@ define("REGISTER_PARM_SEX"         , "sex");
 define("REGISTER_PARM_PHONE_NUMBER", "phoneNumber");
 define("REGISTER_PARM_AVATAR"      , "useravatar");
 
-$requestAck = array('status'=>1, 'info'=>'success', 'userID'=>''); //默认返回结果
+//其他宏定义
+define("REGISTER_SUCCESS"          , 0);
+define("REGISTER_FAILED"           , 1);
+
+$requestAck = array('status'=>1, 'info'=>'', 'userID'=>''); //默认返回结果
 
 $nickName    = getMandatoryParameter(REGISTER_PARM_NICKNAME    , "post");
 $sex         = getMandatoryParameter(REGISTER_PARM_SEX         , "post");
 $phoneNumber = getMandatoryParameter(REGISTER_PARM_PHONE_NUMBER, "post");
 
 if(!isUploadSuccess(REGISTER_PARM_AVATAR)) {
-    setRequestAck(1, "File useravatar upload failed", "");
-    echo "File useravatar upload failed";
+    $errorMsg = getUploadFailure(REGISTER_PARM_AVATAR);
+    setRequestAck(REGISTER_FAILED, $errorMsg, "");
+    print json_encode($requestAck);
     exit;
 }
 
@@ -31,37 +36,33 @@ $uploadFileType = $_FILES[REGISTER_PARM_AVATAR]['type'];
 if($uploadFileType != 'image/png') {
     global $requestAck;
 
-    setRequestAck(1, "Problem: file is not image: $uploadFileType", "");
+    setRequestAck(REGISTER_FAILED, "Problem: file is not image: $uploadFileType", "");
     print json_encode($requestAck);
     exit;
 }
 
-$storedFileName = "/Users/ruby/horen/WebServer/testStorage/$phoneNumber.png";
-if(is_uploaded_file($_FILES[REGISTER_PARM_AVATAR]['tmp_name'])) {
-    if(!defined("SAE_MYSQL_HOST_M")) { // 开发环境
-        if(!move_uploaded_file($_FILES['useravatar']['tmp_name'], $storedFileName)) {
-            echo 'Problem: Could not move file to destination directory';
-            exit;
-        }
-    }
-
-    //生产环境存储图片
-}
-
 $sexInt = ($sex == "男")? 1:0;
 $userID = generateUserID();
+$storedFileName = getFileURLForStore($userID);
+
+saveUploadFile($storedFileName);
 addUserToDatabase($userID, $nickName, $storedFileName, $phoneNumber, $sexInt);
 
 //写入数据库
 function addUserToDatabase($id, $nickName, $avatar, $phone, $sex) {
+    global $userID, $requestAck;
+
     $conn = db_connect();
     $conn->set_charset("utf8"); // 指定数据库字符编码
 
     $result = $conn->query(" insert into user(userid, nickname, avatar, sex, phone) values(\"$id\", \"$nickName\", \"$avatar\", $sex, \"$phone\");");
     if (!$result) {
-        echo "Insert user info to database failed.";
-        $result->free();
+        //$result->free(); // 插入语句不用free?
         $conn->close();
+
+        setRequestAck(REGISTER_FAILED, "Insert user info to database failed.", $userID);
+        print json_encode($requestAck);
+        exit;
     }
 
     //$result->free();
@@ -108,7 +109,39 @@ function getMillisecond($length) {
     return substr($afterDot, 0, 3);
 }
 
-setRequestAck(0, "success", $userID);
+function getFileURLForStore($userID) {
+    if(!defined("SAE_MYSQL_HOST_M")) { // 开发环境
+        return "/Users/ruby/horen/WebServer/testStorage/$userID.png";
+    }
+    else { //云端环境
+        //TODO: 云环境存储
+    }
+}
+
+function saveUploadFile($file) {
+    global $userID;
+    global $requestAck;
+
+    $tmpFile = $_FILES[REGISTER_PARM_AVATAR]['tmp_name'];
+
+    if(!is_uploaded_file($tmpFile)) {
+        setRequestAck(REGISTER_FAILED, "非上传的文件：$tmpFile", "");
+        print json_encode($requestAck);
+        exit;
+    }
+
+    if(!defined("SAE_MYSQL_HOST_M")) { // 开发环境
+        if(!move_uploaded_file($tmpFile, $file)) {
+            setRequestAck(REGISTER_FAILED, "Problem: Could not move file to destination directory", "");
+            print json_encode($requestAck);
+            exit;
+        }
+    }
+    else { //云端环境
+        //TODO: 云环境存储
+    }
+}
+setRequestAck(REGISTER_SUCCESS, "", $userID);
 print json_encode($requestAck);
 
 ?>

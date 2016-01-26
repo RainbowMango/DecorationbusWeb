@@ -59,5 +59,26 @@ function isUploadSuccess($fileKey) {
     return true;
 }
 
+function getUploadFailure($fileKey) {
+    $error = $_FILES["$fileKey"]['error'];
+    if($error != UPLOAD_ERR_OK) {
+        switch($error) {
+            case UPLOAD_ERR_INI_SIZE:
+                return 'File exceeded upload_max_filesize.';
+            case UPLOAD_ERR_FORM_SIZE:
+                return "File exceeded max_file_size.";
+            case UPLOAD_ERR_PARTIAL;
+                return 'File only partially uploaded.';
+            case UPLOAD_ERR_NO_FILE:
+                return 'No file uploaded.';
+            case UPLOAD_ERR_NO_TMP_DIR:
+                return 'Cannot upload file: No temp directory specified.';
+            case UPLOAD_ERR_CANT_WRITE:
+                return 'Upload failed: Cannot write to disk.';
+        }
+    }
+
+    return "";
+}
 
 ?>
