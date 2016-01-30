@@ -3,6 +3,10 @@ header("Content-Type: text/html; charset=utf-8");
 require_once('../../script/php/databaseFunctions.php');
 require_once('parmCommon.php');
 
+if(defined("SAE_MYSQL_HOST_M")) {
+    use sinacloud\sae\Storage as Storage;
+}
+
 /*
  * interface: 以JSON格式返回
  * array('status'=>0, 'info'=>'success', 'userID'=>'20160124233815097TX6C6');
@@ -115,6 +119,7 @@ function getFileURLForStore($userID) {
     }
     else { //云端环境
         //TODO: 云环境存储
+        return "http://decorationbus-avatar.stor.sinaapp.com/user/$userID.png";
     }
 }
 
@@ -139,6 +144,9 @@ function saveUploadFile($file) {
     }
     else { //云端环境
         //TODO: 云环境存储
+        $s = new Storage();
+        $s->putObjectFile($tmpFile, "avatar", "user/$userID.png");
+        $s->setExceptions(true);
     }
 }
 setRequestAck(REGISTER_SUCCESS, "", $userID);
