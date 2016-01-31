@@ -46,6 +46,13 @@ $sexInt = ($sex == "男")? 1:0;
 $userID = generateUserID();
 $storedFileName = getFileURLForStore($userID);
 
+// 数据校验
+if(!isNicknameAvailable($nickName)) {
+    setRequestAck(REGISTER_FAILED, "哎呀，名字已经被使用了", $userID);
+    print json_encode($requestAck);
+    exit;
+}
+
 saveUploadFile($storedFileName);
 addUserToDatabase($userID, $nickName, $storedFileName, $phoneNumber, $sexInt);
 
@@ -68,6 +75,31 @@ function addUserToDatabase($id, $nickName, $avatar, $phone, $sex) {
 
     //$result->free();
     $conn->close();
+}
+
+//查询用户名是否已被使用
+function isNicknameAvailable($name) {
+    global $requestAck;
+
+    $conn = db_connect();
+    $conn->set_charset("utf8"); // 指定数据库字符编码
+
+
+    $result = $conn->query("select nickname from user where nickname = \"$name\"");
+    if (!$result) {
+        setRequestAck(REGISTER_FAILED, "Search nick name failed: $name.", $userID);
+        print json_encode($requestAck);
+        $conn->close();
+        exit;
+    }
+
+    $num_result = $result->num_rows;
+
+    //$result->free();
+    $conn->close();
+
+
+    return ($num_result > 0)? false : true;
 }
 
 function setRequestAck($status, $info, $userID) {
