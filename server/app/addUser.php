@@ -115,7 +115,7 @@ function getFileURLForStore($userID) {
         return "/Users/ruby/horen/WebServer/testStorage/$userID.png";
     }
     else { //云端环境
-        return "http://decorationbus-avatar.stor.sinaapp.com/user/$userID.png";
+        return "http://decorationbus-decorationbus.stor.sinaapp.com/user/avatar/$userID.png";
     }
 }
 
@@ -139,7 +139,7 @@ function saveUploadFile($file) {
         }
     }
     else { //云端环境
-        saePutObjectFile($tmpFile, "avatar", "user/$userID.png");
+        saePutObjectFile($tmpFile, "decorationbus", "user/avatar/$userID.png");
     }
 }
 setRequestAck(REGISTER_SUCCESS, "", $userID);
